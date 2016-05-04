@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name=viewport content="width=device-width initial-scale=1">
+    <title>av.combo</title>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="./av.combo.js"></script>
+</head>
+
+<body>
+    <select id='myselect'>
+        <option value='#ff0000'>Red</option>
+        <option value='#00ff00'>Green</option>
+        <option value='#0000ff'>Blue</option>
+        <option value='#ffffff' selected>White</option>
+        <option value='#000000'>Black</option>
+    </select>
+    <script>
+
+        var optionGenerator = function (text, value) {
+                return '<div style="width:125px; height:25px; border-radius:4px;color:#cccccc;background:' + value + '">'+text.toUpperCase()+'</div>';
+            },
+            mycallback = function(value){
+                document.body.style.background = value;
+            }
+
+        av.combo({
+            selector: '#myselect',
+            transformer: optionGenerator,
+            callback: mycallback
+        });
+
+    </script>
+</body>
